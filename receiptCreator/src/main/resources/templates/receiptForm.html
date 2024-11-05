@@ -1,0 +1,29 @@
+<!-- receiptForm.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Receipt Details</title>
+</head>
+<body>
+    <h1>Enter Receipt Details</h1>
+    <form action="/generateReceipts" method="post">
+        <div th:each="i : ${#numbers.sequence(0, numReceipts - 1)}">
+            <h3>Receipt [[${i + 1}]]</h3>
+            <label>Date:</label>
+            <input type="date" name="date" required><br><br>
+            
+          <!--  <label>Time:</label>
+            <input type="time" name="time" required><br><br> -->
+            
+            <label>Area:</label>
+            <input type="text" name="area" required><br><br>
+            
+            <label>Amount:</label>
+            <input type="number" step="0.01" name="amount" required><br><br>
+        </div>
+        
+        <button type="submit">Generate Receipts</button>
+    </form>
+</body>
+</html>

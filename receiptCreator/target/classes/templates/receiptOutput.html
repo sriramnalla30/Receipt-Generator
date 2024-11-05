@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generated Receipts</title>
+    <style>
+        /* Centering the receipt content */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: monospace;
+            background-color: #f9f9f9;
+            margin: 0;
+            flex-direction: column;
+        }
+
+        /* Receipt container styling */
+        h1 {
+            text-align: center;
+            font-size: 1.2rem;
+            margin: 0;
+            padding-top: 10px;
+            font-weight: bold;
+        }
+
+        div {
+            background-color: #ffffff;
+            width: 300px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: left;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        /* General styling for text */
+        p {
+            margin: 5px 0;
+            display: flex;
+        }
+
+        /* Label and value alignment */
+        .label {
+            display: inline-block;
+            width: 100px; /* Adjust width as needed */
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .value {
+            padding-left: 10px; /* Add space after the colon */
+        }
+
+        /* Bold headings */
+        h3 {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin: 10px 0;
+            text-align: center;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px dashed #333;
+            margin: 10px 0;
+        }
+
+        /* Styling for the Thank You message */
+        div > p:last-child {
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center;
+        }
+
+        /* Page break after each receipt for printing */
+        @media print {
+            div {
+                page-break-after: always;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Generated Receipts</h1>
+    <div th:each="receipt : ${receipts}">
+        <img src="/indian-oil-logo.png" alt="indian oil logo" width="250" height="150">
+        <h3>Indian Oil</h3>
+        <p>JOGESH SERVICE STATION</p>
+        <p>ROAD NO.90, OPP SBI BANK</p>
+        <p>OLD MUMBAI, MUMBAI, MR</p>
+        <p>PH: 2312334445545</p>
+        
+        <p><span class="label">Bill No</span>: <span class="value">[[${receipt.billNo}]]</span></p>
+        <p><span class="label">Trns. ID</span>: <span class="value">[[${receipt.transId}]]</span></p>
+        <p><span class="label">Atnd. ID</span>: <span class="value">[[${receipt.atndId}]]</span></p>
+        <p><span class="label">Receipt</span>: <span class="value">Physical Receipt</span></p>
+        <p><span class="label">Vehi. No</span>: <span class="value">NotEntered</span></p>
+        <p><span class="label">Mob. No</span>: <span class="value">NotEntered</span></p>
+        <p><span class="label">Date</span>: <span class="value">[[${receipt.date}]]</span></p>
+        <p><span class="label">Time</span>: <span class="value">[[${receipt.time}]]</span></p>
+        <p><span class="label">FP. ID</span>: <span class="value">1</span></p>
+        <p><span class="label">Nozl. No</span>: <span class="value">[[${receipt.nozzleNo}]]</span></p>
+        <p><span class="label">Fuel</span>: <span class="value">[[${receipt.fuel}]]</span></p>
+        <p><span class="label">Rate</span>: <span class="value">Rs [[${receipt.rate}]]</span></p>
+        <p><span class="label">Sale</span>: <span class="value">Rs [[${receipt.sale}]]</span></p>
+        <p><span class="label">Volume</span>: <span class="value">[[${receipt.volume}]] Ltr</span></p>
+        <p><span class="label">TOTAL</span>: <span class="value">Rs [[${receipt.sale}]]</span></p><br>
+        <p>.......Thank You! Visit Again.......</p>
+        <hr>
+    </div>
+
+</body>
+</html>
